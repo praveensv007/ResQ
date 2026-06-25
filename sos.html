@@ -118,7 +118,7 @@ textarea.form-control{
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="profile.html">
+                        <a class="nav-link active" href="auth.html">
                             Profile
                         </a>
                     </li>
@@ -146,12 +146,12 @@ textarea.form-control{
 
             <div class="mb-3">
                 <label>Name</label>
-                <input type="text" class="form-control" id="name">
+                <input type="text" class="form-control" id="name" required placeholder="Enter Your Name">
             </div>
 
             <div class="mb-3">
                 <label>Phone Number</label>
-                <input type="number" class="form-control" id="phone">
+                <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit number">
             </div>
 
             <div class="mb-3">
@@ -176,6 +176,7 @@ textarea.form-control{
             </button>
 
             <p id="location">Location Not Found</p>
+            <input type="text" id="locationInput" hidden required>
 
         </div>
 
@@ -225,51 +226,77 @@ textarea.form-control{
 
     <script>
 
-        function getLocation() {
+           function getLocation() {
 
-            if (navigator.geolocation) {
+        if (navigator.geolocation) {
 
-                navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
 
-            }
-            else {
-
-                document.getElementById("location").innerHTML =
-                    "Geolocation not supported";
-
-            }
-
+        } else {
+            document.getElementById("location").innerHTML = "Geolocation not supported";
+            document.getElementById("locationInput").value = "";
         }
+    }
 
-        function showPosition(position) {
+    function showPosition(position) {
 
-            document.getElementById("location").innerHTML =
-                "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
 
-        }
+        document.getElementById("location").innerHTML =
+            "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+        // store location so validation can check it
+        document.getElementById("locationInput").value = latitude + "," + longitude;
+    }
+
+    function showError() {
+        document.getElementById("location").innerHTML = "Location Not Found";
+        document.getElementById("locationInput").value = "";
+    }
 
         function sendSOS() {
 
-            let name = document.getElementById("name").value;
+        let name = document.getElementById("name");
+        let phone = document.getElementById("phone");
+        let locationInput = document.getElementById("locationInput");
+        let emergency = document.getElementById("emergency");
 
-            let emergency = document.getElementById("emergency").value;
-
-            if (name == "") {
-
-                alert("Please Enter Name");
-
-            }
-            else {
-
-                document.getElementById("status").innerHTML =
-                    "SOS Alert Sent Successfully for " + emergency;
-
-                alert("Emergency SOS Sent");
-
-            }
-
+        // Name validation
+        if (!name.checkValidity()) {
+            name.reportValidity();
+            return;
         }
+
+        // Phone validation
+        if (!phone.checkValidity()) {
+            phone.reportValidity();
+            return;
+        }
+
+        // Custom phone validation message
+        if (!/^\d{10}$/.test(phone.value)) {
+            phone.setCustomValidity("Phone number must be exactly 10 digits");
+            phone.reportValidity();
+            phone.setCustomValidity("");
+            return;
+        } else {
+            phone.setCustomValidity("");
+        }
+
+        // Location validation
+       if (locationInput.value.trim() === "") {
+            document.getElementById("location").innerHTML =
+                "<span style='color:red;'>Please click 'Get My Location' before sending SOS</span>";
+            return;
+        }
+
+        document.getElementById("status").innerHTML =
+            "SOS Alert Sent Successfully for " + emergency.value;
+             alert("Emergency SOS Sent Successfully!");
+       
+
+    }
 
     </script>
 
