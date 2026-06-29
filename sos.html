@@ -15,14 +15,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-color: #0f172a;
-            color:white;
-        }
+            * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+        body{
+    background:
+    linear-gradient(
+        rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)
+    ),
+    url("https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80")
+    center/cover fixed;
+
+    color:#fff;
+    min-height:100vh;
+}
 
         .navbar {
-            background:linear-gradient(90deg, #111827, #1e293b );border-bottom:2px solid #ef4444;
+            background: linear-gradient(90deg,
+                    #111827,
+                    #1e293b);
             padding: 15px 0;
+            border-bottom: 2px solid #ef4444;
         }
 
         .navbar-brand {
@@ -41,24 +57,27 @@
             color: #ef4444;
         }
 
+
         .header {
-              
-    color:#dc2626;
-    padding:5px 0;
+
+            color: #dc2626;
+            padding: 5px 0;
             text-align: center;
         }
-       .card{
-    border-radius:20px;
-}
 
-.form-control,
-.form-select{
-    height:50px;
-}
+        .card {
+            border-radius: 20px;
+        }
 
-textarea.form-control{
-    height:auto;
-}
+        .form-control,
+        .form-select {
+            height: 50px;
+        }
+
+        textarea.form-control {
+            height: auto;
+        }
+
         .sos-btn {
             width: 100%;
             height: 70px;
@@ -67,7 +86,13 @@ textarea.form-control{
         }
 
         .status-box {
-            background-color: #205087;
+            background-color: #021429;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .emergency {
+            background-color: #84d296;
             padding: 15px;
             border-radius: 10px;
         }
@@ -83,52 +108,33 @@ textarea.form-control{
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-
+    <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container">
-
-            <a class="navbar-brand" href="#">
-                ResQ
-            </a>
-
+            <a class="navbar-brand" href="#">ResQ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navMenu">
-
                 <ul class="navbar-nav ms-auto">
-
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="alert.html">
-                            Alerts
-                        </a>
+                        <a class="nav-link" href="alert.html">Alerts</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="sos.html">
-                            SOS
-                        </a>
+                        <a class="nav-link" href="sos.html">SOS</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link active" href="auth.html">
-                            Profile
-                        </a>
+                        <a class="nav-link " href="essentials.html"> Essentials</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth.html">Profile</a>
+                    </li>
                 </ul>
-
             </div>
-
         </div>
-
     </nav>
 
     <div class="header">
@@ -138,83 +144,85 @@ textarea.form-control{
 
     <div class="container mt-4 form">
         <div class="row justify-content-center">
-        <div class="col-lg-7">
+            <div class="col-lg-7">
 
-        <div class="card p-4 shadow-lg border-0">
+                <div class="card p-4 shadow-lg border-0">
 
-            <h3 class="mb-3">Emergency Details</h3>
+                    <h3 class="mb-3">Emergency Details</h3>
 
-            <div class="mb-3">
-                <label>Name</label>
-                <input type="text" class="form-control" id="name" required placeholder="Enter Your Name">
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="name" minlength="5" placeholder="Enter Your Name" required pattern="[A-Za-z ]+" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}"
+                            placeholder="Enter 10-digit number">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Emergency Type</label>
+
+                        <select class="form-select" id="emergency">
+                            <option>Flood</option>
+                            <option>Fire</option>
+                            <option>Earthquake</option>
+                            <option>Medical</option>
+                            <option>Landslide</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="3" id="desc"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary mb-3" onclick="getLocation()">
+                        Get My Location
+                    </button>
+
+                    <p id="location">Location Not Found</p>
+                    <input type="text" id="locationInput" hidden required>
+
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-danger sos-btn" onclick="sendSOS()">
+                        🚨 SEND SOS ALERT
+                    </button>
+                </div>
+
+                <div class="status-box mt-4">
+                    <h4>Status</h4>
+                    <p id="status">Waiting for Alert...</p>
+                </div>
+
+                <div class="emergency card p-2 mt-4 ">
+
+                    <h3 class="text-center">Emergency Contacts</h3>
+
+                    <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+
+                        <a href="tel:100" class="btn btn-dark">
+                            Police
+                        </a>
+
+                        <a href="tel:108" class="btn btn-light">
+                            Ambulance
+                        </a>
+
+                        <a href="tel:101" class="btn btn-danger">
+                            Fire
+                        </a>
+
+                    </div>
+
+                </div>
+
             </div>
-
-            <div class="mb-3">
-                <label>Phone Number</label>
-                <input type="tel" class="form-control" id="phone" required pattern="[0-9]{10}" placeholder="Enter 10-digit number">
-            </div>
-
-            <div class="mb-3">
-                <label>Emergency Type</label>
-
-                <select class="form-select" id="emergency">
-                    <option>Flood</option>
-                    <option>Fire</option>
-                    <option>Earthquake</option>
-                    <option>Medical</option>
-                    <option>Landslide</option>
-                </select>
-            </div>
-
-            <div class="mb-3">
-                <label>Description</label>
-                <textarea class="form-control" rows="3" id="desc"></textarea>
-            </div>
-
-            <button class="btn btn-primary mb-3" onclick="getLocation()">
-                Get My Location
-            </button>
-
-            <p id="location">Location Not Found</p>
-            <input type="text" id="locationInput" hidden required>
-
         </div>
-
-        <div class="mt-4">
-            <button class="btn btn-danger sos-btn" onclick="sendSOS()">
-                🚨 SEND SOS ALERT
-            </button>
-        </div>
-
-        <div class="status-box mt-4">
-            <h4>Status</h4>
-            <p id="status">Waiting for Alert...</p>
-        </div>
-
-        <div class="card p-2 mt-4 bg-success" >
-
-            <h3 class="text-center">Emergency Contacts</h3>
-
-            <div class="d-flex justify-content-center gap-3 mt-3 flex-wrap">
-
-                <a href="tel:100" class="btn btn-dark">
-                    Police
-                </a>
-
-                <a href="tel:108" class="btn btn-light">
-                    Ambulance
-                </a>
-
-                <a href="tel:101" class="btn btn-danger">
-                    Fire
-                </a>
-
-            </div>
-
-        </div>
-
-    </div></div>
-</div>
+    </div>
 
     <footer>
 
@@ -226,77 +234,87 @@ textarea.form-control{
 
     <script>
 
-           function getLocation() {
+        function getLocation() {
 
-        if (navigator.geolocation) {
+            if (navigator.geolocation) {
 
-            navigator.geolocation.getCurrentPosition(showPosition, showError);
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
 
-        } else {
-            document.getElementById("location").innerHTML = "Geolocation not supported";
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation not supported";
+                document.getElementById("locationInput").value = "";
+            }
+        }
+
+        function showPosition(position) {
+
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            document.getElementById("location").innerHTML =
+                "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+            // store location so validation can check it
+            document.getElementById("locationInput").value = latitude + "," + longitude;
+        }
+
+        function showError() {
+            document.getElementById("location").innerHTML = "Location Not Found";
             document.getElementById("locationInput").value = "";
         }
-    }
-
-    function showPosition(position) {
-
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-
-        document.getElementById("location").innerHTML =
-            "Latitude: " + latitude + "<br>Longitude: " + longitude;
-
-        // store location so validation can check it
-        document.getElementById("locationInput").value = latitude + "," + longitude;
-    }
-
-    function showError() {
-        document.getElementById("location").innerHTML = "Location Not Found";
-        document.getElementById("locationInput").value = "";
-    }
 
         function sendSOS() {
 
-        let name = document.getElementById("name");
-        let phone = document.getElementById("phone");
-        let locationInput = document.getElementById("locationInput");
-        let emergency = document.getElementById("emergency");
+            let name = document.getElementById("name");
+            let phone = document.getElementById("phone");
+            let locationInput = document.getElementById("locationInput");
+            let emergency = document.getElementById("emergency");
 
-        // Name validation
-        if (!name.checkValidity()) {
-            name.reportValidity();
-            return;
+            // Name validation
+if (!name.checkValidity()) {
+                name.reportValidity();
+                return;
+            }
+
+            // Name should contain only letters and spaces
+            if (!/^[A-Za-z ]+$/.test(name.value.trim())) {
+                name.setCustomValidity("Name should contain only letters and spaces");
+                name.reportValidity();
+                name.setCustomValidity("");
+                return;
+            } else {
+                name.setCustomValidity("");
+            }
+
+            // Phone validation
+            if (!phone.checkValidity()) {
+                phone.reportValidity();
+                return;
+            }
+
+            // Custom phone validation message
+            if (!/^\d{10}$/.test(phone.value)) {
+                phone.setCustomValidity("Phone number must be exactly 10 digits");
+                phone.reportValidity();
+                phone.setCustomValidity("");
+                return;
+            } else {
+                phone.setCustomValidity("");
+            }
+
+            // Location validation
+            if (locationInput.value.trim() === "") {
+                document.getElementById("location").innerHTML =
+                    "<span style='color:red;'>Please click 'Get My Location' before sending SOS</span>";
+                return;
+            }
+
+            document.getElementById("status").innerHTML =
+                "SOS Alert Sent Successfully for " + emergency.value;
+            alert("Emergency SOS Sent Successfully!");
+
+
         }
-
-        // Phone validation
-        if (!phone.checkValidity()) {
-            phone.reportValidity();
-            return;
-        }
-
-        // Custom phone validation message
-        if (!/^\d{10}$/.test(phone.value)) {
-            phone.setCustomValidity("Phone number must be exactly 10 digits");
-            phone.reportValidity();
-            phone.setCustomValidity("");
-            return;
-        } else {
-            phone.setCustomValidity("");
-        }
-
-        // Location validation
-       if (locationInput.value.trim() === "") {
-            document.getElementById("location").innerHTML =
-                "<span style='color:red;'>Please click 'Get My Location' before sending SOS</span>";
-            return;
-        }
-
-        document.getElementById("status").innerHTML =
-            "SOS Alert Sent Successfully for " + emergency.value;
-             alert("Emergency SOS Sent Successfully!");
-       
-
-    }
 
     </script>
 

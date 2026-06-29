@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ResQ - Safety Guidelines</title>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<style>
-    body{
-        background:#0f172a;
-        color:white;
-        font-family:'Poppins',sans-serif;
+    <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
+        body {
+            background:
+                linear-gradient(rgba(21, 27, 42, 0.82),
+                    rgba(16, 30, 24, 0.6)),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
 
-     .navbar{
-      background:linear-gradient(90deg,#111827,#1e293b);
-    border-bottom:2px solid #ef4444;
+      .navbar{
+      background:linear-gradient(
+        90deg,
+        #111827,
+        #1e293b
+    );
       padding:15px 0;
+      border-bottom:2px solid #ef4444;
     }
 
     .navbar-brand{
@@ -40,39 +54,53 @@
       color:#ef4444 ;
     }
 
-    .guideline-card{
-        background:#1e293b;
-        border:none;
-        border-radius:15px;
-        color:white;
-        transition:0.3s;
-        height:100%;
-    }
 
-    .guideline-card:hover{
-        transform:translateY(-5px);
-    }
+        .guideline-card {
+            background: #1f2937;
 
-    .guideline-card i{
-        font-size:40px;
-        color:#ef4444;
-    }
+            border-left: 5px solid #22c55e;
 
-    footer{
-        background:#111827;
-        color:#9ca3af;
-        text-align:center;
-        padding:20px;
-        margin-top:50px;
-    }
-</style>
+            border-radius: 16px;
+
+            padding: 25px;
+
+            color: white;
+
+            height: 100%;
+
+            transition: .35s;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+        }
+
+        .guideline-card:hover {
+
+            background: #273549;
+
+            transform: translateY(-6px);
+
+        }
+
+        .guideline-card i {
+            font-size: 40px;
+            color: #ef4444;
+        }
+
+        footer {
+            background: #111827;
+            color: #9ca3af;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
 
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container">
       <a class="navbar-brand" href="#">ResQ</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -91,6 +119,9 @@
             <a class="nav-link" href="sos.html">SOS</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link "href="essentials.html"> Essentials</a>
+          </li> 
+          <li class="nav-item">
             <a class="nav-link" href="auth.html">Profile</a>
           </li>
         </ul>
@@ -98,76 +129,135 @@
     </div>
   </nav>
 
-<div class="container py-5">
+    <div class="container py-5">
 
 
-<h1 class="text-center mb-5">
-    <i class="bi bi-shield-check"></i>
-    Safety Guidelines
-</h1>
+        <h1 class="text-center mb-5">
+            <i class="bi bi-shield-check"></i>
+            Safety Guidelines
+        </h1>
 
-<div class="row g-4">
+        <div class="row g-4">
 
-    <div class="col-md-6">
-        <div class="card guideline-card p-4">
-            <i class="bi bi-water"></i>
-            <h3 class="mt-3">Flood Safety</h3>
-            <ul>
-                <li>Move to higher ground immediately.</li>
-                <li>Avoid walking through floodwater.</li>
-                <li>Keep emergency supplies ready.</li>
-                <li>Follow official alerts.</li>
-            </ul>
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-water"></i>
+                    <h3 class="mt-3">Flood Safety</h3>
+                    <ul>
+                        <li>Move to higher ground immediately.</li>
+                        <li>Avoid walking through floodwater.</li>
+                        <li>Keep emergency supplies ready.</li>
+                        <li>Follow official alerts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-globe"></i>
+                    <h3 class="mt-3">Earthquake Safety</h3>
+                    <ul>
+                        <li>Drop, Cover and Hold On.</li>
+                        <li>Stay away from windows.</li>
+                        <li>Move to open areas after shaking stops.</li>
+                        <li>Check for injuries.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-wind"></i>
+                    <h3 class="mt-3">Cyclone Safety</h3>
+                    <ul>
+                        <li>Stay indoors.</li>
+                        <li>Secure doors and windows.</li>
+                        <li>Prepare emergency kits.</li>
+                        <li>Evacuate if instructed.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-fire"></i>
+                    <h3 class="mt-3">Fire Safety</h3>
+                    <ul>
+                        <li>Use nearest safe exit.</li>
+                        <li>Do not use elevators.</li>
+                        <li>Call emergency services.</li>
+                        <li>Stay low if smoke is present.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Landslide Safety -->
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-triangle"></i>
+                    <h3 class="mt-3">Landslide Safety</h3>
+                    <ul>
+                        <li>Move away from steep slopes immediately.</li>
+                        <li>Watch for falling rocks and debris.</li>
+                        <li>Follow evacuation instructions.</li>
+                        <li>Avoid affected roads and pathways.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Heatwave Safety -->
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-sun-fill"></i>
+                    <h3 class="mt-3">Heatwave Safety</h3>
+                    <ul>
+                        <li>Stay hydrated throughout the day.</li>
+                        <li>Avoid outdoor activities during peak heat.</li>
+                        <li>Wear light-colored clothing.</li>
+                        <li>Never leave children or pets in vehicles.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Lightning Safety -->
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-lightning-charge-fill"></i>
+                    <h3 class="mt-3">Lightning Safety</h3>
+                    <ul>
+                        <li>Seek shelter inside a building.</li>
+                        <li>Avoid open fields and tall trees.</li>
+                        <li>Stay away from electrical appliances.</li>
+                        <li>Wait at least 30 minutes after the last thunder.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- General Emergency -->
+
+            <div class="col-md-6">
+                <div class="card guideline-card p-4">
+                    <i class="bi bi-shield-check"></i>
+                    <h3 class="mt-3">General Emergency</h3>
+                    <ul>
+                        <li>Keep emergency contacts readily available.</li>
+                        <li>Prepare a disaster emergency kit.</li>
+                        <li>Follow instructions from local authorities.</li>
+                        <li>Stay calm and help others if safe.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+
     </div>
 
-    <div class="col-md-6">
-        <div class="card guideline-card p-4">
-            <i class="bi bi-globe"></i>
-            <h3 class="mt-3">Earthquake Safety</h3>
-            <ul>
-                <li>Drop, Cover and Hold On.</li>
-                <li>Stay away from windows.</li>
-                <li>Move to open areas after shaking stops.</li>
-                <li>Check for injuries.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="card guideline-card p-4">
-            <i class="bi bi-wind"></i>
-            <h3 class="mt-3">Cyclone Safety</h3>
-            <ul>
-                <li>Stay indoors.</li>
-                <li>Secure doors and windows.</li>
-                <li>Prepare emergency kits.</li>
-                <li>Evacuate if instructed.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="card guideline-card p-4">
-            <i class="bi bi-fire"></i>
-            <h3 class="mt-3">Fire Safety</h3>
-            <ul>
-                <li>Use nearest safe exit.</li>
-                <li>Do not use elevators.</li>
-                <li>Call emergency services.</li>
-                <li>Stay low if smoke is present.</li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-
-</div>
-
-<footer>
-    © 2026 ResQ | Emergency Response System
-</footer>
+    <footer>
+        © 2026 ResQ | Emergency Response System
+    </footer>
 
 </body>
+
 </html>

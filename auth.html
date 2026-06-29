@@ -4,24 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DisasterLink Login</title>
-
+    <title>ResQ Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            background-color: #0f172a;
             min-height: 100vh;
             margin: 0;
+            
+
+            background:
+                linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+                url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80") no-repeat center center fixed;
+
+            background-size: cover;
         }
 
         .navbar {
-            background: linear-gradient(90deg, #111827, #1e293b);
-            border-bottom: 2px solid #ef4444;
+            background: linear-gradient(90deg,
+                    #111827,
+                    #1e293b);
             padding: 15px 0;
+            border-bottom: 2px solid #ef4444;
         }
 
         .navbar-brand {
@@ -39,6 +54,7 @@
         .nav-link:hover {
             color: #ef4444;
         }
+
 
         .login-container {
             min-height: calc(100vh - 56px);
@@ -91,10 +107,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
         <div class="container">
             <a class="navbar-brand" href="#">ResQ</a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -104,15 +119,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="alert.html">Alerts</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="sos.html">SOS</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link " href="essentials.html"> Essentials</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="auth.html">Profile</a>
                     </li>
@@ -169,7 +184,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control" id="signupName" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" id="signupName" minlength="5" placeholder="Enter Name" required pattern="[A-Za-z ]+" required>
                     </div>
 
                     <div class="mb-3">
@@ -179,10 +194,10 @@
 
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Create Password" minlength="8"
-                            maxlength="12" required>
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Create Password"
+                            minlength="8" maxlength="12" required>
                     </div>
-                    
+
                     <button type="button" class="btn btn-danger" onclick="createAccount()">
                         Create Account
                     </button>
@@ -206,98 +221,98 @@
         </p>
 
     </footer>
-<script>
-    function showSignup() {
-        document.getElementById("loginForm").style.display = "none";
-        document.getElementById("signupForm").style.display = "block";
-    }
-
-    function showLogin() {
-        document.getElementById("signupForm").style.display = "none";
-        document.getElementById("loginForm").style.display = "block";
-    }
-
-    function createAccount() {
-        let name = document.getElementById("signupName");
-        let email = document.getElementById("signupEmail");
-        let password = document.getElementById("signupPassword");
-
-        // Name validation
-        if (!name.checkValidity()) {
-            name.reportValidity();
-            return;
+    <script>
+        function showSignup() {
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("signupForm").style.display = "block";
         }
 
-        // Name should contain only letters and spaces
-        if (!/^[A-Za-z ]+$/.test(name.value.trim())) {
-            name.setCustomValidity("Name should contain only letters and spaces");
-            name.reportValidity();
-            name.setCustomValidity("");
-            return;
-        } else {
-            name.setCustomValidity("");
+        function showLogin() {
+            document.getElementById("signupForm").style.display = "none";
+            document.getElementById("loginForm").style.display = "block";
         }
 
-        // Email validation
-        if (!email.checkValidity()) {
-            email.reportValidity();
-            return;
+        function createAccount() {
+            let name = document.getElementById("signupName");
+            let email = document.getElementById("signupEmail");
+            let password = document.getElementById("signupPassword");
+
+            // Name validation
+            if (!name.checkValidity()) {
+                name.reportValidity();
+                return;
+            }
+
+            // Name should contain only letters and spaces
+            if (!/^[A-Za-z ]+$/.test(name.value.trim())) {
+                name.setCustomValidity("Name should contain only letters and spaces");
+                name.reportValidity();
+                name.setCustomValidity("");
+                return;
+            } else {
+                name.setCustomValidity("");
+            }
+
+            // Email validation
+            if (!email.checkValidity()) {
+                email.reportValidity();
+                return;
+            }
+
+            // Password required / minlength / maxlength validation
+            if (!password.checkValidity()) {
+                password.reportValidity();
+                return;
+            }
+
+            // Password must contain at least one letter, one digit, one special character, no spaces
+            if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()+-])\S{8,12}$/.test(password.value)) {
+                password.setCustomValidity("Password must be 8-12 characters and include at least one letter, one digit, and one special character");
+                password.reportValidity();
+                password.setCustomValidity("");
+                return;
+            } else {
+                password.setCustomValidity("");
+            }
+
+            alert("Account Created Successfully!");
+            document.getElementById("signup").reset();
+            showLogin();
         }
 
-        // Password required / minlength / maxlength validation
-        if (!password.checkValidity()) {
-            password.reportValidity();
-            return;
+        function loginAccount() {
+            let email = document.getElementById("loginEmail");
+            let password = document.getElementById("loginPassword");
+
+            // Email validation
+            if (!email.checkValidity()) {
+                email.reportValidity();
+                return;
+            }
+
+            // Password required / minlength / maxlength validation
+            if (!password.checkValidity()) {
+                password.reportValidity();
+                return;
+            }
+
+            // Password custom validation
+            if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()+-])\S{8,12}$/.test(password.value)) {
+                password.setCustomValidity("Password must be 8-12 characters and include at least one letter, one digit, and one special character");
+                password.reportValidity();
+                password.setCustomValidity("");
+                return;
+            } else {
+                password.setCustomValidity("");
+            }
+
+            alert("Logged In Successfully!");
+            document.getElementById("loginData").reset();
         }
-
-        // Password must contain at least one letter, one digit, one special character, no spaces
-        if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()+-])\S{8,12}$/.test(password.value)) {
-            password.setCustomValidity("Password must be 8-12 characters and include at least one letter, one digit, and one special character");
-            password.reportValidity();
-            password.setCustomValidity("");
-            return;
-        } else {
-            password.setCustomValidity("");
-        }
-
-        alert("Account Created Successfully!");
-        document.getElementById("signup").reset();
-        showLogin();
-    }
-
-    function loginAccount() {
-        let email = document.getElementById("loginEmail");
-        let password = document.getElementById("loginPassword");
-
-        // Email validation
-        if (!email.checkValidity()) {
-            email.reportValidity();
-            return;
-        }
-
-        // Password required / minlength / maxlength validation
-        if (!password.checkValidity()) {
-            password.reportValidity();
-            return;
-        }
-
-        // Password custom validation
-        if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()+-])\S{8,12}$/.test(password.value)) {
-            password.setCustomValidity("Password must be 8-12 characters and include at least one letter, one digit, and one special character");
-            password.reportValidity();
-            password.setCustomValidity("");
-            return;
-        } else {
-            password.setCustomValidity("");
-        }
-
-        alert("Logged In Successfully!");
-        document.getElementById("loginData").reset();
-    }
-</script>
+    </script>
 
 
-   
+
 
 </body>
 
